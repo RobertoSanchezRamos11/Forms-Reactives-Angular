@@ -1,0 +1,47 @@
+<div class="container mt-3">
+
+    <h1>Formularios basados en plantillas</h1>
+
+    <div class="card">
+        <div class="card-body">
+
+            <form (ngSubmit)="procesar()" #formContact="ngForm">
+                <div class="mb-2">
+                    <label class="form-label">
+                        Nombre:
+                    </label>
+
+                    <input type="text" name="nombre" class="form-control" placeholder="Por favor ingrese su nombre"
+                        [(ngModel)]="persona.nombre" required #name="ngModel">
+
+                    <div class="alert alert-danger mt-2" [hidden]="name.valid || name.pristine">
+                        El nombre es obligatorio
+                    </div>
+
+                </div>
+
+                <div class="mb-2">
+                    <label class="form-label">
+                        Edad:
+                    </label>
+
+                    <input type="number" name="edad" class="form-control" placeholder="Por favor ingrese su edad"
+                        [(ngModel)]="persona.edad" required #edad="ngModel">
+
+                    <div class="alert alert-danger mt-2" [hidden]="edad.valid || edad.pristine">
+                        La edad es obligatorio
+                    </div>
+                </div>
+
+                <button class="btn btn-primary mt-2" [disabled]="formContact.invalid">
+                    Enviar
+                </button>
+
+            </form>
+
+        </div>
+    </div>
+
+    {{ formContact.valid }}
+
+</div>

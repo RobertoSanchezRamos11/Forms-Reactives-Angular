@@ -1,0 +1,92 @@
+<div class="container">
+   <div class=" text-center mt-5 ">
+      <h1>Bootstrap Contact Form</h1>
+   </div>
+
+   <div class="row">
+      <div class="col-lg-7 mx-auto">
+         <div class="card mt-2 mx-auto p-4 bg-light">
+            <div class="card-body bg-light">
+
+               <div class="container">
+                  <form id="contact-form" [formGroup]="formUser" (ngSubmit)="enviar()">
+
+                     <div class="controls">
+
+                        <div class="row mb-2">
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label for="form_name">Firstname *</label>
+                                 <input id="form_name" type="text" name="name" class="form-control"
+                                    placeholder="Please enter your firstname *" formControlName="name">
+
+                                 <div *ngIf="name.touched && name.errors?.['required']" class="alert alert-danger">El
+                                    nombre el obligatorio</div>
+
+                              </div>
+                           </div>
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label for="form_lastname">Lastname *</label>
+                                 <input id="form_lastname" type="text" name="lastname" class="form-control"
+                                    placeholder="Please enter your lastname *" formControlName="lastname">
+
+                                 <div *ngIf="lastname.touched && lastname.errors?.['required']"
+                                    class="alert alert-danger">El
+                                    apellido el obligatorio</div>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row mb-2 ">
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label for="form_email">Email *</label>
+                                 <input id="form_email" type="email" name="email" class="form-control"
+                                    placeholder="Please enter your email *" formControlName="email">
+
+                                 <div *ngIf="email.touched && email.errors?.['required']" class="alert alert-danger">El
+                                    email el obligatorio</div>
+
+                                 <div *ngIf="email.touched && email.errors?.['email']" class="alert alert-danger">El
+                                    email debe ser valido </div>
+
+                              </div>
+                           </div>
+                        </div>
+
+                        <div class="row">
+                           <div class="col-md-12">
+                              <div class="form-group">
+                                 <label for="form_message">Message *</label>
+                                 <textarea id="form_message" name="message" class="form-control"
+                                    placeholder="Write your message here." rows="4"
+                                    formControlName="message"></textarea>
+                              </div>
+
+                           </div>
+
+
+                           <div class="col-md-12">
+
+                              <input type="submit" class="btn btn-success btn-send  pt-2 btn-block mt-4
+                        " value="Send Message">
+
+                           </div>
+
+                        </div>
+
+
+                     </div>
+                  </form>
+               </div>
+            </div>
+
+
+         </div>
+         <!-- /.8 -->
+
+      </div>
+      <!-- /.row-->
+
+   </div>
+</div>

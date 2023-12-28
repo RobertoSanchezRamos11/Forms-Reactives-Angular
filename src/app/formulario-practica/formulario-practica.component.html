@@ -1,0 +1,84 @@
+<h1>Formulario Practica</h1>
+<div class="card">
+    <div class="card-body">
+
+        <form [formGroup]="formUser" (ngSubmit)="procesar()">
+            <div class="row d-flex justify-content-center">
+                <div class="col-4">
+                    <label class="form-label me-3">
+                        Nombre:
+                    </label>
+
+                    <input type="text" class="form-control" name="name" formControlName="name">
+
+                    <div class="alert alert-danger mt-2" [hidden]="name.valid || name.pristine">
+                        El nombre es obligatorio
+                    </div>
+                </div>
+
+                <div class="col-4">
+                    <label class="form-label me-3">
+                        Apellido:
+                    </label>
+
+                    <input type="text" class="form-control" name="surname" formControlName="surname">
+
+                    <div class="alert alert-danger mt-2" [hidden]="surname.valid || surname.pristine">
+                        El apellido es obligatorio
+                    </div>
+                </div>
+            </div>
+
+            <div class="row d-flex justify-content-center mt-4">
+                <div class="col-4">
+                    <label class="form-label me-3">
+                        Email:
+                    </label>
+
+                    <input type="email" class="form-control" name="email" formControlName="email">
+
+                    <div class="alert alert-danger mt-2" [hidden]="email.valid || email.pristine">
+                        <span *ngIf="email.errors?.['required']">
+                            El email es obligatorio
+                        </span>
+
+                        <span *ngIf="email.errors?.['email']">
+                            El email debe ser valido
+                        </span>
+                    </div>
+                </div>
+
+                <div class="col-4">
+                    <label class="form-label me-3">
+                        Celular:
+                    </label>
+
+                    <input type="text" class="form-control" name="celphone" formControlName="celphone">
+
+
+                    <div class="alert alert-danger mt-2" [hidden]="celphone.valid || celphone.pristine">
+                        <span *ngIf="celphone.errors?.['required']">
+                            El numero de celular es obligatorio
+                        </span>
+
+                        <span *ngIf="celphone.errors?.['minlength'] || celphone.errors?.['maxlength']">
+                            Debe contener min 9 digitos numericos
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row w-25 mt-4">
+                <div class="col d-flex justify-content-end align-items-center">
+                    <button class="btn btn-success" [disabled]="formUser.invalid">
+                        Enviar
+                    </button>
+                </div>
+            </div>
+
+
+        </form>
+
+
+    </div>
+</div>
